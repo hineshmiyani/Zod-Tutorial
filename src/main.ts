@@ -78,7 +78,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Object type */
-
 // const hobbies = ["Programming", "Wrestling", "Guitar"] as const;
 
 // const UserSchema = z.object({
@@ -124,7 +123,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Array type */
-
 // const UserSchema = z.object({
 //   username: z.string(),
 //   friends: z.array(z.string()).min(2).max(5),
@@ -144,7 +142,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Tuple type */
-
 // const UserSchema = z.object({
 //   username: z.string(),
 //   // cords: z.tuple([z.number(), z.string(), z.number()]),
@@ -161,7 +158,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Union type */
-
 // const UserSchema = z.object({
 //   id: z.union([z.string(), z.number()]),
 //   // id: z.string().or(z.number()),
@@ -175,7 +171,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Discriminated Union type */
-
 // const UserSchema = z.object({
 //   id: z.discriminatedUnion("status", [
 //     z.object({
@@ -197,7 +192,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserSchema.safeParse(user));
 
 /* ✅ : Record type */
-
 // const UserMap = z.record(z.string(), z.number());
 
 // type User = z.infer<typeof UserMap>;
@@ -210,7 +204,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log("[Validate:]", UserMap.safeParse(user));
 
 /* ✅ : Map type */
-
 // const UserMap = z.map(z.string(), z.object({ name: z.string() }));
 
 // type User = z.infer<typeof UserMap>;
@@ -223,7 +216,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log(UserMap.safeParse(user));
 
 /* ✅ : Set type */
-
 // const NumberSet = z.set(z.number());
 
 // type Number = z.infer<typeof NumberSet>;
@@ -233,7 +225,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log(NumberSet.safeParse(user));
 
 /* ✅ : Promise type */
-
 // const PromiseSchema = z.promise(z.string());
 
 // type Promise = z.infer<typeof PromiseSchema>;
@@ -243,7 +234,6 @@ import { fromZodError } from "zod-validation-error";
 // console.log(PromiseSchema.safeParse(promise));
 
 /* ✅ : Advanced Validation */
-
 // const BrandEmailSchema = z
 //   .string()
 //   .email()
@@ -256,25 +246,24 @@ import { fromZodError } from "zod-validation-error";
 // console.log(BrandEmailSchema.safeParse(email));
 
 /* ✅ : Error Handling */
+// const UserSchema = z.object({
+//   username: z.string(),
+//   age: z.number().min(18),
+//   // cords: z.tuple([z.number(), z.string(), z.number()]),
+//   cords: z.tuple([z.number(), z.string(), z.number()]).rest(z.number()),
+// });
 
-const UserSchema = z.object({
-  username: z.string(),
-  age: z.number().min(18),
-  // cords: z.tuple([z.number(), z.string(), z.number()]),
-  cords: z.tuple([z.number(), z.string(), z.number()]).rest(z.number()),
-});
+// type User = z.infer<typeof UserSchema>;
 
-type User = z.infer<typeof UserSchema>;
+// const user = {
+//   username: "Julien",
+//   age: 16,
+//   cords: [4, "56", 6, 8],
+// };
 
-const user = {
-  username: "Julien",
-  age: 16,
-  cords: [4, "56", 6, 8],
-};
+// const result = UserSchema.safeParse(user);
+// // console.log("[Validate:]", result);
 
-const result = UserSchema.safeParse(user);
-// console.log("[Validate:]", result);
-
-if (!result.success) {
-  console.log(fromZodError(result.error).message);
-}
+// if (!result.success) {
+//   console.log(fromZodError(result.error).message);
+// }
